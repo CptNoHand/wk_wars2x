@@ -53,12 +53,12 @@ CONFIG.allow_quick_start_video = true
 
 -- Allow passenger view
 -- When enabled, the front seat passenger will be able to view the radar and plate reader from their end.
-CONFIG.allow_passenger_view = false
+CONFIG.allow_passenger_view = true
 
 -- Allow passenger control
 -- Dependent on CONFIG.allow_passenger_view. When enabled, the front seat passenger will be able to open the
 -- radar remote and control the radar and plate reader for themself and the driver.
-CONFIG.allow_passenger_control = false
+CONFIG.allow_passenger_control = true
 
 -- Set this to true if you use Sonoran CAD with the WraithV2 plugin
 CONFIG.use_sonorancad = false
@@ -68,10 +68,10 @@ CONFIG.use_sonorancad = false
 CONFIG.keyDefaults =
 {
 	-- Remote control key
-	remote_control = "f5",
+	remote_control = "f7",
 
 	-- Radar key lock key
-	key_lock = "l",
+	key_lock = "r",
 
 	-- Radar front antenna lock/unlock Key
 	front_lock = "numpad8",
@@ -96,12 +96,12 @@ CONFIG.menuDefaults =
 
 	-- Sensitivity for each radar mode, this changes how far the antennas will detect vehicles
 	-- Options: 0.2, 0.4, 0.6, 0.8, 1.0
-	["same"] = 0.6,
-	["opp"] = 0.6,
+	["same"] = 1.0,
+	["opp"] = 1.0,
 
 	-- The volume of the audible beep
 	-- Options: 0.0, 0.2, 0.4, 0.6, 0.8, 1.0
-	["beep"] = 0.6,
+	["beep"] = 0.4,
 
 	-- The volume of the verbal lock confirmation
 	-- Options: 0.0, 0.2, 0.4, 0.6, 0.8, 1.0
@@ -113,15 +113,15 @@ CONFIG.menuDefaults =
 
 	-- The speed unit used in conversions
 	-- Options: mph or kmh
-	["speedType"] = "mph",
+	["speedType"] = "kmh",
 
 	-- The state for automatic speed locking. This requires CONFIG.allow_fast_limit to be true.
 	-- Options: true or false
-	["fastLock"] = false,
+	["fastLock"] = true,
 
 	-- The speed limit required for automatic speed locking. This requires CONFIG.allow_fast_limit to be true.
 	-- Options: 0 to 200
-	["fastLimit"] = 60
+	["fastLimit"] = 125
 }
 
 -- Here you can change the default scale of the UI elements, as well as the safezone size
@@ -133,7 +133,7 @@ CONFIG.uiDefaults =
 	{
 		radar = 0.75,
 		remote = 0.75,
-		plateReader = 0.75
+		plateReader = 0.60
 	},
 
 	-- The safezone size, must be a multiple of 5.
