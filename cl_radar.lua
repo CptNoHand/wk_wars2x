@@ -358,6 +358,11 @@ function RADAR:GetDisplayState()
 	return self.vars.displayed
 end
 
+-- Client export used to get whether the radar is displayed or hidden
+exports( "GetDisplayState", function()
+    return RADAR:GetDisplayState()
+end )
+
 -- Return the state of the fastDisplay setting, short hand direct way to check if the fast system is enabled
 function RADAR:IsFastDisplayEnabled()
 	return self:GetSettingValue( "fastDisplay" )
@@ -367,6 +372,11 @@ end
 function RADAR:IsEitherAntennaOn()
 	return self:IsAntennaTransmitting( "front" ) or self:IsAntennaTransmitting( "rear" )
 end
+
+-- Client export used to get whether either of the antennas are turned on
+exports( "IsEitherAntennaOn", function()
+    return RADAR:IsEitherAntennaOn()
+end )
 
 -- Sends an update to the NUI side with the current state of the antennas and if the fast system is enabled
 function RADAR:SendSettingUpdate()
@@ -1768,6 +1778,9 @@ function RADAR:Main()
 
 		-- Send the update to the NUI side
 		SendNUIMessage( { _type = "update", speed = data.patrolSpeed, antennas = data.antennas } )
+
+		-- Event for Sonoran CAD's radar script
+		TriggerEvent( "Sonoran::UpdateAnt", data.antennas )
 	end
 end
 
